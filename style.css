@@ -1,0 +1,318 @@
+:root {
+    --primary-color: #3a3a3a;
+    --secondary-color: #f0f0f0;
+    --background-color: #e6e6e6;
+    --text-color: #000000;
+    --button-hover: #d1d1d1;
+    --button-active: #b1b1b1;
+    --display-bg: #ffffff;
+    --display-text: #000000;
+    --operator-bg: #f0f0f0;
+    --operator-text: #000000;
+    --number-bg: #ffffff;
+    --number-text: #000000;
+    --advanced-bg: #e1e1e1;
+    --advanced-text: #000000;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.15s ease;
+}
+
+body.dark-theme {
+    --primary-color: #2d2d2d;
+    --secondary-color: #3a3a3a;
+    --background-color: #1e1e1e;
+    --text-color: #ffffff;
+    --button-hover: #4a4a4a;
+    --button-active: #5a5a5a;
+    --display-bg: #2d2d2d;
+    --display-text: #ffffff;
+    --operator-bg: #3a3a3a;
+    --number-bg: #2d2d2d;
+    --advanced-bg: #3a3a3a;
+    --advanced-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: var(--transition);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-color);
+}
+
+#themeToggle:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.calculator {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    animation: slideIn 0.3s ease;
+    width: 100%;
+    max-width: 350px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.display {
+    background-color: var(--display-bg);
+    color: var(--display-text);
+    padding: 20px;
+    text-align: right;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+#history {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    min-height: 20px;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+#display {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    text-align: right;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+}
+
+button {
+    border: none;
+    padding: clamp(15px, 4vw, 25px);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    cursor: pointer;
+    transition: var(--transition);
+    outline: none;
+    background-color: var(--number-bg);
+    color: var(--number-text);
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+button:active {
+    background-color: var(--button-active);
+    transform: translateY(1px);
+}
+
+.operator {
+    background-color: var(--operator-bg);
+    color: var(--operator-text);
+    font-weight: bold;
+}
+
+.advanced-functions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.advanced-functions button {
+    background-color: var(--advanced-bg);
+    color: var(--advanced-text);
+    border-radius: 5px;
+    padding: clamp(10px, 2vw, 15px);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .calculator, .advanced-functions {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 40px;
+    }
+
+    main {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .advanced-functions {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 200px;
+    }
+}
+
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+button:active {
+    animation: buttonPress 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ... (estilos previos) ... */
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--button-hover);
+}
+
+footer .fab {
+    margin-left: 5px;
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+footer:hover {
+    transform: translateY(-3px);
+}
+
+footer:hover .fab {
+    animation: pulse 0.5s infinite;
+}
+
+@media (max-width: 480px) {
+    footer {
+        margin-top: 15px;
+        padding: 8px;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Asegúrate de que estas variables estén definidas en tu :root o body */
+:root {
+    --primary-color: #3a3a3a;
+    --secondary-color: #f0f0f0;
+    --button-hover: #d1d1d1;
+}
+
+body.dark-theme {
+    --primary-color: #2d2d2d;
+    --secondary-color: #ffffff;
+    --button-hover: #4a4a4a;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Calculadora</h1>
+            <button id="themeToggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <main>
+            <div class="calculator">
+                <div class="display">
+                    <div id="history" aria-live="polite"></div>
+                    <input type="text" id="display" value="0" readonly aria-label="Resultado">
+                </div>
+                <div class="buttons">
+                    <button class="operator" data-action="clear">C</button>
+                    <button class="operator" data-action="toggleSign">+/-</button>
+                    <button class="operator" data-action="percentage">%</button>
+                    <button class="operator" data-action="divide">÷</button>
+                    <button class="number">7</button>
+                    <button class="number">8</button>
+                    <button class="number">9</button>
+                    <button class="operator" data-action="multiply">×</button>
+                    <button class="number">4</button>
+                    <button class="number">5</button>
+                    <button class="number">6</button>
+                    <button class="operator" data-action="subtract">-</button>
+                    <button class="number">1</button>
+                    <button class="number">2</button>
+                    <button class="number">3</button>
+                    <button class="operator" data-action="add">+</button>
+                    <button class="number">0</button>
+                    <button class="number">.</button>
+                    <button class="operator" data-action="squareRoot">√</button>
+                    <button class="operator" data-action="calculate">=</button>
+                </div>
+            </div>
+            <div class="advanced-functions">
+                <button data-action="sin">sin</button>
+                <button data-action="cos">cos</button>
+                <button data-action="tan">tan</button>
+                <button data-action="log">log</button>
+                <button data-action="ln">ln</button>
+                <button data-action="power">x<sup>y</sup></button>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <a href="https://www.youtube.com/@Angel_JASG">Angel JASG</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
